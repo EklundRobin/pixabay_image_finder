@@ -10,11 +10,11 @@ class Search extends Component {
     searchText: '',
     amount: 15,
     apiUrl: 'https://pixabay.com/api',
-    apiKey: '10562851-a7f97f9b276867717e7af2daf',
+    apiKey: '',
     images: []
   };
 
-  onTextChange = (e) => {
+  onTextChange = e => {
     const val = e.target.value;
     this.setState({ [e.target.name]: val }, () => {
       if (val === '') {
@@ -26,8 +26,8 @@ class Search extends Component {
               this.state.searchText
             }&image_type=photo&per_page=${this.state.amount}&safesearch=true`
           )
-          .then((res) => this.setState({ images: res.data.hits }))
-          .catch((err) => console.log(err));
+          .then(res => this.setState({ images: res.data.hits }))
+          .catch(err => console.log(err));
       }
     });
   };
